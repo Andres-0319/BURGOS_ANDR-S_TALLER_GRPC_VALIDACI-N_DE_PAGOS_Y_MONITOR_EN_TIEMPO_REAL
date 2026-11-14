@@ -14,8 +14,9 @@
 
 **Tema:** Ejercicios de gRPC.
 
-**Objetivo**
-- Desarrollar un microservicio escalable basado en gRPC y Protocol Buffers bajo el patrón unario, diseñado para optimizar los procesos de validación y detección de fraude en pasarelas de pago de e-commerce de alto tráfico, garantizando respuestas síncronas de ultra baja latencia, en la que el sistema implemente y valide estrictas reglas de negocio para evaluar la integridad de las tarjetas de crédito, control de montos, prevención de listas negras y restricciones geográficas en transacciones globales.
+**Objetivos**
+- Construir un servicio gRPC unario que valide una solicitud de pago y devuelva una respuesta síncrona indicando si la transacción fue aprobada o rechazada, aplicando códigos de estado gRPC en caso de solicitudes inválidas o denegadas.
+- Implementar un patrón gRPC de Server Streaming donde el cliente envía una única petición de suscripción y el servidor responde con un flujo continuo (cadena de respuestas con `yield`) con las lecturas emitidas por los sensores.
 
 **Desarrollo de la actividad**
 
