@@ -68,6 +68,24 @@
 
 </div>
 
+<div align="center">
+
+**Parte de la ejecución del Servidor**
+
+</div>
+
+**Paso 1:**
+
+**Paso 2:**
+
+**Paso 3:**
+
+<div align="center">
+
+**Parte de la ejecución del Cliente**
+
+</div>
+
 **Paso 1:**
 
 **Paso 2:**
