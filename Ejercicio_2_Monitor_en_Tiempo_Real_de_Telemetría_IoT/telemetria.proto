@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package telemetria;
+
+// Servicio de monitoreo de cadena de frío
+service MonitorCadenaFrio {
+
+    // Método Server Streaming
+    rpc TransmitirTelemetria (SuscripcionCamion) returns (stream LecturaSensor);
+
+}
+
+// Solicitud de suscripción del cliente
+message SuscripcionCamion {
+    string id_camion = 1;
+    int32 intervalo_segundos = 2;
+}
+
+// Lecturas enviadas continuamente por el servidor
+message LecturaSensor {
+    string id_camion = 1;
+    double temperatura_celsius = 2;
+    double latitud = 3;
+    double longitud = 4;
+    string timestamp = 5;
+    bool alerta_critica = 6;
+}
