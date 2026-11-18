@@ -8,9 +8,9 @@
 
 </div>
 
-**Nombre del estudiante:** Burgos Andrés
+**Nombre del estudiante:** Burgos Andrés, Morales Pool, Narváez Cristian 
 
-**Fecha:** 18 de noviembre de 2026
+**Fecha:** 17 de noviembre de 2026
 
 **Tema:** Ejercicios de gRPC.
 
@@ -68,31 +68,15 @@
 
 </div>
 
-<div align="center">
+**Paso 1:** En esta captura de consola se evidencia la ejecución del servidor gRPC operando bajo el patrón de comunicación Server Streaming, tras recibir la suscripción inicial para monitorear el vehículo identificado como CAM-001 con un intervalo de muestreo de 2 segundos. A partir de dicha petición única, el servidor comienza a emitir de forma periódica y continua las lecturas simuladas de los sensores utilizando la instrucción "yield LecturaSensor(...)" sobre una misma conexión HTTP/2.
 
-**Parte de la ejecución del Servidor**
+<img width="667" height="280" alt="image" src="https://github.com/user-attachments/assets/4e95add6-3b95-427e-8a69-1ba5ebb6d0e1" />
 
-</div>
+**Paso 2:** En esta segunda captura se visualiza la terminal de la central de monitoreo consumiendo el flujo continuo de eventos emitido por el servidor mediante un bucle iterativo sobre el stub gRPC. Conforme arriban los mensajes serializados en tiempo real, el cliente despliega detalladamente cada lectura de telemetría recibida para el camión CAM-001, incluyendo temperatura, coordenadas geográficas de latitud y longitud, y la marca de tiempo exacta. Para las lecturas que cumplen con las condiciones óptimas de conservación, como el registro de 3.8 °C, la consola resalta en color verde el mensaje "Estado: TEMPERATURA NORMAL".
 
-**Paso 1:**
-
-**Paso 2:**
-
-**Paso 3:**
-
-<div align="center">
-
-**Parte de la ejecución del Cliente**
-
-</div>
-
-**Paso 1:**
-
-**Paso 2:**
-
-**Paso 3:**
+<img width="643" height="453" alt="image" src="https://github.com/user-attachments/assets/8eba03fc-97da-42d3-90b4-cf1897c5705b" />
 
 **Conclusiones**
 
-- 
-- 
+- La implementación práctica de ambos microservicios permitió comprobar las ventajas arquitectónicas de utilizar gRPC sobre HTTP/2 y serialización binaria mediante Protocol Buffers frente a arquitecturas tradicionales basadas en texto plano. La definición estricta de contratos a través de archivos .proto garantiza un tipado fuerte e interoperabilidad entre cliente y servidor, reduciendo significativamente la sobrecarga de red y la latencia en las comunicaciones.
+- A través del desarrollo de los dos ejercicios se evidenció la flexibilidad de gRPC para adaptarse a distintas necesidades de negocio mediante sus patrones de comunicación. El patrón unario implementado en la pasarela de pagos resultó idóneo para operaciones transaccionales puntuales de tipo petición-respuesta donde se requiere una autorización inmediata. Por su parte, el patrón Server Streaming aplicado al monitoreo de cadena de frío demostró su superioridad para flujos de datos en tiempo real.
